@@ -13,7 +13,7 @@ class ExchangeController < ApplicationController
             opt = CurrencyCode.pluck(:code)
         else
             options = get_exchange_rates(base_code)
-            opt.keys
+            opt = options.keys
         end
         render json: opt
     end
@@ -90,7 +90,7 @@ class ExchangeController < ApplicationController
                 "updated_at": DateTime.now
             }
         end
-        CurrencyCode.upsert_all(code_arr)
+        CurrencyCode.upsert_all(code_arr, unique_by: :code)
         cur_code = CurrencyCode.find_by(code: code)
         cur_code.rate_last_update = DateTime.parse(data["time_last_update_utc"])
         cur_code.rate_next_update = DateTime.parse(data["time_next_update_utc"])
@@ -108,7 +108,7 @@ class ExchangeController < ApplicationController
                 "updated_at": DateTime.now
             }
         end
-        CurrencyRate.upsert_all(rate_arr)
+        CurrencyRate.upsert_all(rate_arr, unique_by: %i[ code_from_id code_to_id ])
         return rates
     end
 end

@@ -7,5 +7,7 @@ class CreateCurrencyRates < ActiveRecord::Migration[6.0]
 
       t.timestamps
     end
+
+    add_index :currency_rates, [:code_from_id, :code_to_id], unique: true
   end
 end

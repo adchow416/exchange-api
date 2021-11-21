@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_214122) do
     t.datetime "rate_last_update_request"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["code"], name: "index_currency_codes_on_code", unique: true
   end
 
   create_table "currency_rates", force: :cascade do |t|
@@ -27,6 +28,7 @@ ActiveRecord::Schema.define(version: 2021_11_21_214122) do
     t.float "rate"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.index ["code_from_id", "code_to_id"], name: "index_currency_rates_on_code_from_id_and_code_to_id", unique: true
     t.index ["code_from_id"], name: "index_currency_rates_on_code_from_id"
     t.index ["code_to_id"], name: "index_currency_rates_on_code_to_id"
   end

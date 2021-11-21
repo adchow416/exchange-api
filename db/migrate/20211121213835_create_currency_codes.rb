@@ -5,8 +5,10 @@ class CreateCurrencyCodes < ActiveRecord::Migration[6.0]
       t.datetime :rate_last_update
       t.datetime :rate_next_update
       t.datetime :rate_last_update_request
-
+      
       t.timestamps
     end
+    
+    add_index :currency_codes, :code, unique: true
   end
 end
