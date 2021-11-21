@@ -1,0 +1,13 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  code: MyString
+  rate_last_update: 2021-11-21 16:38:35
+  rate_next_update: 2021-11-21 16:38:35
+  rate_last_update_request: 2021-11-21 16:38:35
+
+two:
+  code: MyString
+  rate_last_update: 2021-11-21 16:38:35
+  rate_next_update: 2021-11-21 16:38:35
+  rate_last_update_request: 2021-11-21 16:38:35
